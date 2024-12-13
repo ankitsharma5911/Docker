@@ -16,6 +16,7 @@ jobs:
       run: docker build . --file Dockerfile --tag workflow-test:$(date +%s)
 
   build-and-test:
+    needs: dockerbuild
     name: build and test
     runs-on: ubuntu-latest    
     steps:
