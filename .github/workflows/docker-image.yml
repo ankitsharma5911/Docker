@@ -16,7 +16,7 @@ jobs:
       run: docker build . --file Dockerfile --tag workflow-test:$(date +%s)
 
   build-and-test:
-    name: run on  ubuntu-latest
+    name: build and test
     runs-on: ubuntu-latest    
     steps:
     - name: Checkout code
