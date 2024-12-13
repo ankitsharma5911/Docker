@@ -8,23 +8,16 @@ on:
 
 jobs:
   dockerbuild:
-    name: Test on  ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    name: run on  ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag workflow-test:$(date +%s)
-  
+
   build-and-test:
-    name: Test on  ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-    
+    name: run on  ubuntu-latest
+    runs-on: ubuntu-latest    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -40,6 +33,6 @@ jobs:
         pip install flask
         pip install pytest
 
-    # - name: Run tests
-    #   run: |
-    #     pytest
+    - name: Run tests
+      run: |
+        pytest
